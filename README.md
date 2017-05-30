@@ -59,7 +59,7 @@ $ npm install -g @angular/cli
 Una vez descargado y descomprimido, o bien clonado, vamos al directorio correspondiente e instalamos las dependencias:
 
 ```bash
-$ cd kc-postium-seed
+$ cd Postium-angular4
 $ npm install
 ```
 
