@@ -47,7 +47,7 @@ Entidad `Category`:
 Antes de empezar a completar **Postium**, que sé que tienes ganas, tienes que clonarlo e instalar sus dependencias. Puedes descargar el código desde [su repositorio en GitHub](https://github.com/vermicida/kc-postium-seed), o bien clonarlo desde una terminal:
 
 ```bash
-$ git clone https://github.com/vermicida/kc-postium-seed.git
+$ https://github.com/JoseAntpr/Postium-angular4
 ```
 
 Recuerda que debes teber instalado [Angular CLI](https://cli.angular.io) a nivel global para trabajar con **Postium**:
