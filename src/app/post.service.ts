@@ -14,6 +14,9 @@ export class PostService {
     @Inject(BackendUri) private _backendUri) { }
 
   getPosts(): Observable<Post[]> {
+    let now = new Date();
+
+    console.log(now.getTime());
 
     /*----------------------------------------------------------------------------------------------|
      | ~~~ Pink Path ~~~                                                                            |
@@ -31,7 +34,7 @@ export class PostService {
      |----------------------------------------------------------------------------------------------*/
 
     return this._http
-      .get(`${this._backendUri}/posts`)
+      .get(`${this._backendUri}/posts?publicationDate_lte=${now.getTime()}&_sort=publicationDate&_order=DESC`)
       .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
   }
 
