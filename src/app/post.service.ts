@@ -9,14 +9,14 @@ import { Post } from './post';
 @Injectable()
 export class PostService {
 
+  
+
   constructor(
     private _http: Http,
     @Inject(BackendUri) private _backendUri) { }
 
   getPosts(): Observable<Post[]> {
     let now = new Date();
-
-    console.log(now.getTime());
 
     /*----------------------------------------------------------------------------------------------|
      | ~~~ Pink Path ~~~                                                                            |
@@ -40,6 +40,8 @@ export class PostService {
 
   getUserPosts(id: number): Observable<Post[]> {
 
+    let now = new Date();
+
     /*----------------------------------------------------------------------------------------------|
      | ~~~ Red Path ~~~                                                                             |
      |----------------------------------------------------------------------------------------------|
@@ -58,7 +60,7 @@ export class PostService {
      |----------------------------------------------------------------------------------------------*/
 
     return this._http
-      .get(`${this._backendUri}/posts`)
+      .get(`${this._backendUri}/posts?publicationDate_lte=${now.getTime()}&author.id=${id}&_sort=publicationDate&_order=DESC`)
       .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
   }
 
