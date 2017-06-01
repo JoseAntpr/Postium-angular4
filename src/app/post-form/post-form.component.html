@@ -7,7 +7,7 @@
 | referencia del formulario en él.                                                            |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 -->
-<form novalidate>
+<form ngForm #post="ngForm" (ngSubmit)="submitPost(post)">
   <!--
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
   | Purple Path                                                                                     |
@@ -18,7 +18,11 @@
   -->
   <input type="text"
          placeholder="Título"
-         class="u-full-width">
+         class="u-full-width"
+         ngModel
+         name="title"
+         #title="ngModel"
+         required>
   <!--
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
   | Purple Path                                                                                     |
@@ -29,7 +33,11 @@
   -->
   <textarea placeholder="Introduce tu historia"
             class="u-full-width georgia-font"
-            autogrow></textarea>
+            ngModel
+            name="intro"
+            #intro="ngModel"
+            autogrow
+            required></textarea>
   <!--
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
   | Purple Path                                                                                     |
@@ -40,7 +48,11 @@
   -->
   <textarea placeholder="Cuenta tu historia"
             class="u-full-width georgia-font"
-            autogrow></textarea>
+            autogrow
+            ngModel
+            name="body"
+            #body="ngModel"
+            required></textarea>
   <div>
     <div>
       <label (click)="setScheduling(false)">
@@ -70,5 +82,5 @@
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
   -->
   <button type="submit"
-          class="button-primary u-pull-right">Publicar</button>
+          class="button-primary u-pull-right" [disabled]="post.invalid">Publicar</button>
 </form>

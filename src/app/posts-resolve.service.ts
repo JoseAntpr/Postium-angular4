@@ -34,7 +34,7 @@ export class PostsResolveService implements Resolve<Post[]> {
      |-----------------------------------------------------------------------------------------*/
 
      else if(route.url[1].path === 'categories'){
-      return null;
+      return this._postService.getCategoryPosts(parseInt(route.url[2].path));
     }
 
     } 

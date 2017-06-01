@@ -280,6 +280,22 @@
         2
       ],
       "id": 10
+    },
+    {
+      "title": "Programar en remoto",
+      "intro": "Como programar en remoto puede ser más efectivo",
+      "body": "Es la mejor experiencia de mi vida",
+      "publicationDate": 1496312690355,
+      "likes": [],
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
+      "id": 11
     }
   ],
   "categories": [
