@@ -9,16 +9,16 @@ import { Post } from './post';
 @Injectable()
 export class PostService {
 
-  private _now;
   
 
   constructor(
     private _http: Http,
     @Inject(BackendUri) private _backendUri) { 
-      this._now = new Date();
     }
 
   getPosts(): Observable<Post[]> {
+
+     let now = new Date();
 
 
     /*----------------------------------------------------------------------------------------------|
@@ -37,11 +37,13 @@ export class PostService {
      |----------------------------------------------------------------------------------------------*/
 
     return this._http
-      .get(`${this._backendUri}/posts?publicationDate_lte=${this._now.getTime()}&_sort=publicationDate&_order=DESC`)
+      .get(`${this._backendUri}/posts?publicationDate_lte=${now.getTime()}&_sort=publicationDate&_order=DESC`)
       .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
   }
 
   getUserPosts(id: number): Observable<Post[]> {
+
+    let now = new Date();
 
 
 
@@ -63,11 +65,13 @@ export class PostService {
      |----------------------------------------------------------------------------------------------*/
 
     return this._http
-      .get(`${this._backendUri}/posts?publicationDate_lte=${this._now.getTime()}&author.id=${id}&_sort=publicationDate&_order=DESC`)
+      .get(`${this._backendUri}/posts?publicationDate_lte=${now.getTime()}&author.id=${id}&_sort=publicationDate&_order=DESC`)
       .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
   }
 
   getCategoryPosts(id: number): Observable<Post[]> {
+
+    let now = new Date();
 
 
     /*--------------------------------------------------------------------------------------------------|
@@ -92,23 +96,21 @@ export class PostService {
      |--------------------------------------------------------------------------------------------------*/
 
     return this._http
-      .get(`${this._backendUri}/posts?publicationDate_lte=${this._now.getTime()}&_sort=publicationDate&_order=DESC`)
+      .get(`${this._backendUri}/posts?publicationDate_lte=${now.getTime()}&_sort=publicationDate&_order=DESC`)
       .map((response: Response): Post[] => {
 
         let postList : Post[] = Post.fromJsonToList(response.json());
         let postListCategory: Post[] = new Array<Post>();
 
         postList.forEach(function(post){
-          console.log()
-          if(post.id === id){
-            postListCategory.push(post);
-          }
+          post.categories.forEach(function(categorie){
+            if(categorie.id === id){
+              postListCategory.push(post);
 
+            }
+          })
         })
-
-        console.log(postListCategory);
         
-
         return postListCategory;
 
       }
