@@ -37,6 +37,7 @@ export class PostsResolveService implements Resolve<Post[]> {
       return this._postService.getCategoryPosts(parseInt(route.url[2].path));
     }
 
+
     } 
 
 

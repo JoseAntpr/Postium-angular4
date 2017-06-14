@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 660px;
+}
+
+.edition .warn {
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+    text-align: left;
+    color: rgba(0, 0, 0, .4);
+    font-size:  .9em;
+}

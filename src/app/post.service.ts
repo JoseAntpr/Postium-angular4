@@ -144,4 +144,17 @@ export class PostService {
       .map((response: Response) => response.json() as Post);
   }
 
+  updatePost(post: Post): Observable<Post>{
+    return this._http
+    .put(`${this._backendUri}/posts/${post.id}`,post)
+    .map((response: Response) => response.json() as Post)
+  }
+
+  updatePostLikes(id: number, likes: number[]): Observable<Post>{
+    let body: any = {'likes': likes};
+    return this._http
+      .patch(`${this._backendUri}/posts/${id}`, body)
+      .map((response: Response) => Post.fromJson(response.json()));
+  }
+
 }

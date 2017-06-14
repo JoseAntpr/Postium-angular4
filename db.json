@@ -298,11 +298,11 @@
       "id": 11
     },
     {
-      "title": "Como ganar la Duodécima",
-      "intro": "El Real Madrid gana la duodécima",
+      "id": 12,
+      "title": "Real Madrid gana la Duodécima",
+      "intro": "El Real Madrid gana la duodécima copa de europa",
       "body": "El equipo jugó un partido magnifico contra una Juventus que venía fuerte después de ganar a rivales de primer nivel como el Barcelona.",
       "publicationDate": 1496607247872,
-      "likes": [],
       "categories": [],
       "author": {
         "id": 1,
@@ -311,14 +311,14 @@
         "email": "keepcoder@postium.com",
         "avatar": "assets/images/keepcoder.jpg"
       },
-      "id": 12
+      "likes": []
     },
     {
-      "title": "El Barcelona rabioso por la Duodécima",
+      "id": 13,
+      "title": "El Barcelona furioso por la Duodécima",
       "intro": "Daniel Alves no pudo hacerle el último favor al Barcelona",
       "body": "Trás un partido alucinante y ante los cánticos de pique cabron saluda al campeón la afición madridista celebra su duodécima copa de Euripa",
       "publicationDate": 1496607435101,
-      "likes": [],
       "categories": [],
       "author": {
         "id": 1,
@@ -327,7 +327,9 @@
         "email": "keepcoder@postium.com",
         "avatar": "assets/images/keepcoder.jpg"
       },
-      "id": 13
+      "likes": [
+        1
+      ]
     }
   ],
   "categories": [

@@ -1,11 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router'
+import { Subscription } from 'rxjs/Subscription';
 
 import { NativeWindow } from './../window';
 import { Post } from './../post';
 import { User } from './../user';
 import { Category } from './../category';
+import { PostService } from '../post.service';
 
 @Component({
   templateUrl: './post-details.component.html',
@@ -14,12 +16,16 @@ import { Category } from './../category';
 export class PostDetailsComponent implements OnInit {
 
   post: Post;
+  postInEdition: boolean = false;
+  private _sessionUser: User = User.defaultUser();
+  private _postSubscription: Subscription;
 
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     @Inject(NativeWindow) private _window,
-    private _router: Router) { }
+    private _router: Router,
+    private _postService: PostService) { }
 
   ngOnInit(): void {
     this._activatedRoute.data.subscribe((data: { post: Post }) => this.post = data.post);
@@ -52,6 +58,26 @@ export class PostDetailsComponent implements OnInit {
    |--------------------------------------------------------------------------------------------------------------------*/
    mostrarPostByCategoria(categoria: Category): void{
      this._router.navigate(['/posts/categories', categoria.id])
+   }
+
+   updatePost(post: Post): void{
+     this._router.navigate(['posts/updatePost', post.id])
+   }
+
+   userCanEditPost(): boolean{
+     return !this.postInEdition && this.post.author.id === this._sessionUser.id;
+   }
+
+   private _unsubscribePostUpdate():void{
+    if(this._postSubscription){
+      this._postSubscription.unsubscribe;
+    }
+  }
+   updatePostLikes(likes: number[]):void{
+     this._unsubscribePostUpdate();
+     this._postSubscription = this._postService
+      .updatePostLikes(this.post.id, likes)
+      .subscribe();
    }
 
 }

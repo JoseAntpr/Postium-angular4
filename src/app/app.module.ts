@@ -32,7 +32,9 @@ import { PostsResolveService } from './posts-resolve.service';
 import { PostsViewComponent } from './posts-view/posts-view.component';
 import { PostService } from './post.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { FromNowPipe } from './from-now.pipe'
+import { FromNowPipe } from './from-now.pipe';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { PostLikesComponent } from './post-likes/post-likes.component'
 
 @NgModule({
   imports: [
@@ -63,7 +65,9 @@ import { FromNowPipe } from './from-now.pipe'
     PostsListComponent,
     PostsViewComponent,
     SearchBoxComponent,
-    FromNowPipe
+    FromNowPipe,
+    UpdatePostComponent,
+    PostLikesComponent
   ],
   providers: [
     BackendUriProvider,

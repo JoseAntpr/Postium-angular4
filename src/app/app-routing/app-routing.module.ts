@@ -9,6 +9,7 @@ import { PostDetailsComponent } from './../post-details/post-details.component';
 import { PostsByCategoryComponent } from './../posts-by-category/posts-by-category.component';
 import { PostsByAuthorComponent } from './../posts-by-author/posts-by-author.component';
 import { PostsViewComponent } from './../posts-view/posts-view.component';
+import {UpdatePostComponent} from './../update-post/update-post.component'
 
 @NgModule({
   imports: [
@@ -39,7 +40,14 @@ import { PostsViewComponent } from './../posts-view/posts-view.component';
       component: PostDetailsComponent,
       resolve: {
         post: PostDetailsResolveService
-      }
+      },
+    },{
+      path: 'posts/updatePost/:postId',
+      component: UpdatePostComponent,
+      resolve: {
+        post: PostDetailsResolveService
+
+      },
     }, {
       path: '**',
       redirectTo: '/posts'

@@ -1,0 +1,13 @@
+<div>
+  <span class="blink-font" (click)="togglePostLike()">
+    <i aria-hidden="true"
+    class="fa"
+    [ngClass]="{
+      'fa-heart': userLikesPost(),
+      'fa-heart-o': !userLikesPost()
+    }">
+    </i>
+    {{likes.lenght}}
+
+  </span>
+</div>

@@ -19,7 +19,13 @@
       | Una vez tengas creado el pipe FromNowPipe, úsalo con la fecha de publicación. |
       |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
       -->
+      
       <span class="date">{{ post.publicationDate | datePost }}</span>
+    </div>
+    <div class="u-pull-right">
+      <button class="edit-icon" *ngIf="userCanEditPost()" (click)="updatePost(post)" >
+        <i class="fa fa-pencil"></i>
+      </button>
     </div>
   </div>
 </div>
@@ -38,4 +44,5 @@
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
   -->
   <category-box [categories]="post.categories" (categoriaSeleccionada)="mostrarPostByCategoria($event)" ></category-box>
+  <post-likes [likes]="post.likes" (likesUpdated)="updatePostLikes($event)"></post-likes>
 </div>
