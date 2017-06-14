@@ -50,7 +50,7 @@ import { PostsSearchComponent } from './../posts-search/posts-search.component';
 
       },
     },{
-      path: 'posts/search',
+      path: 'search',
       component: PostsSearchComponent
 
     }, {

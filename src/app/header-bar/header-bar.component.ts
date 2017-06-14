@@ -11,6 +11,6 @@ export class HeaderBarComponent {
 
   goToPostsSearch(query: String): void {
     let extras: NavigationExtras = { queryParams:{ q: query } };
-    this._router.navigate(['/posts/search'], extras);  
+    this._router.navigate(['search'], extras);  
   }
 }
