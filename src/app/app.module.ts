@@ -34,7 +34,8 @@ import { PostService } from './post.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { FromNowPipe } from './from-now.pipe';
 import { UpdatePostComponent } from './update-post/update-post.component';
-import { PostLikesComponent } from './post-likes/post-likes.component'
+import { PostLikesComponent } from './post-likes/post-likes.component';
+import { PostsSearchComponent } from './posts-search/posts-search.component'
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { PostLikesComponent } from './post-likes/post-likes.component'
     SearchBoxComponent,
     FromNowPipe,
     UpdatePostComponent,
-    PostLikesComponent
+    PostLikesComponent,
+    PostsSearchComponent
   ],
   providers: [
     BackendUriProvider,

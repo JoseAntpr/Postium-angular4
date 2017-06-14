@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/operator/map";
 
@@ -155,6 +155,22 @@ export class PostService {
     return this._http
       .patch(`${this._backendUri}/posts/${id}`, body)
       .map((response: Response) => Post.fromJson(response.json()));
+  }
+
+  searchPosts(query: string): Observable<Post[]>{
+    let search = new URLSearchParams();
+    search.set("_sort", "publicationDate");
+    search.set("_order", "DESC");
+    search.set("publicationDate_lte", new Date().getTime().toString());
+    search.set("q", query);
+    let options = new RequestOptions();
+    options.search = search;
+
+    return this._http
+      .get(`${this._backendUri}/posts`, options)
+      .map((response: Response): Post[] => {
+        return Post.fromJsonToList(response.json());
+      })
   }
 
 }

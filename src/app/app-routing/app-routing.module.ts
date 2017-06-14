@@ -9,7 +9,8 @@ import { PostDetailsComponent } from './../post-details/post-details.component';
 import { PostsByCategoryComponent } from './../posts-by-category/posts-by-category.component';
 import { PostsByAuthorComponent } from './../posts-by-author/posts-by-author.component';
 import { PostsViewComponent } from './../posts-view/posts-view.component';
-import {UpdatePostComponent} from './../update-post/update-post.component'
+import {UpdatePostComponent} from './../update-post/update-post.component';
+import { PostsSearchComponent } from './../posts-search/posts-search.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,10 @@ import {UpdatePostComponent} from './../update-post/update-post.component'
         post: PostDetailsResolveService
 
       },
+    },{
+      path: 'posts/search',
+      component: PostsSearchComponent
+
     }, {
       path: '**',
       redirectTo: '/posts'
